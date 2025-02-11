@@ -6,7 +6,7 @@ var cs = builder.Configuration.GetConnectionString("conStr");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(cs));                                                                                                                                                                                                                                                                   
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
