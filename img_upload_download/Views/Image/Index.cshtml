@@ -1,15 +1,14 @@
-﻿@* @{
+﻿@{
     ViewData["Title"] = "Uploaded Images";
 }
 
-<h1>@ViewData["Title"]</h1> *@
-<h2 class="text-primary text-center">Upload image</h2><br />
+<h1>@ViewData["Title"]</h1>
 
-<table class="table table-bordered table-striped table-hover table-active">
+<table class="table table-bordered table-active table-hover table-success table-striped">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>File Name</th>
+            <th>Sr. no</th>
+            <th>Image</th>   <!-- New column to display image -->
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,13 +17,17 @@
         {
             <tr>
                 <td>@image.Id</td>
-                <td>@image.FileName</td>
                 <td>
-                    <a href="@Url.Action("Download", "Image", new { id = image.Id })" class=" btn btn-outline-success">Download</a>
+                    <!-- Display the image using img tag -->
+                    <img src="~/images/@image.FileName" alt="@image.FileName" style="max-width: 100px; max-height: 100px;" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Download", "Image", new { id = image.Id })" class="btn btn-success">Download</a>
+                    <a href="@Url.Action("Delete", "Image", new { id = image.Id })" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<a href="@Url.Action("Upload", "Image")" class=" btn btn-outline-success">Upload Image</a>
+<a href="@Url.Action("Upload", "Image")" class="btn btn-primary">Upload New Image</a>
